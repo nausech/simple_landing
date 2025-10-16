@@ -264,24 +264,24 @@ const Projects = () => {
       id: 1,
       title: 'Construcción salón',
       location: 'Huelva',
-      before: '../public/salon_antes.jpeg',
-      after: '../public/salon_despues.jpeg',
+      before: '/salon_antes.jpeg',
+      after: '/salon_despues.jpeg',
       description: 'Transformación completa de espacio residencial con diseño contemporáneo'
     },
     {
       id: 2,
       title: 'Renovación de cocina',
       location: 'Beas',
-      before: '../public/cuarto_antes.jpeg',
-      after: '../public/cuarto_despues.jpeg',
+      before: '/cuarto_antes.jpeg',
+      after: '/cuarto_despues.jpeg',
       description: 'Renovación de cocina con finos acabados'
     },
     {
       id: 3,
       title: 'Contrucción de espacio común',
       location: 'Monterrey',
-      before: '../public/sala_antes.jpeg',
-      after: '../public/sala_despues.jpeg',
+      before: '/sala_antes.jpeg',
+      after: '/sala_despues.jpeg',
       description: 'Proyecto de expansión de un area común'
     },
     {
@@ -547,7 +547,13 @@ const Footer = () => {
     <footer className="bg-black text-white py-8 px-4">
       <div className="max-w-7xl mx-auto text-center">
         <p className="text-gray-400">
-          © {new Date().getFullYear()} <span className="text-red-600 font-semibold">MiEmpresa</span>. Todos los derechos reservados.
+          © {new Date().getFullYear()} <span className="text-red-600 font-semibold">Contrucciones & Reformas Narvaez</span>. Todos los derechos reservados.
+        </p>
+        <p className="text-gray-400">
+          tel: +34 641884268
+        </p>
+        <p className="text-gray-400">
+          Huelva - España
         </p>
       </div>
     </footer>
@@ -567,11 +573,11 @@ const WhatsAppButton = () => {
       animate={{ scale: 1 }}
       transition={{ delay: 1, type: 'spring', stiffness: 260, damping: 20 }}
       whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
+      whileTap={{ scale: 1 }}
       className="fixed bottom-6 right-6 text-white p-4 rounded-full shadow-2xl transition-all duration-300 z-50 hover:brightness-110"
       style={{ backgroundColor: '#25D366' }}
     >
-      <MessageCircle className="w-8 h-8" />
+      <MessageCircle className="w-20 h-20" />
     </motion.a>
   );
 };
