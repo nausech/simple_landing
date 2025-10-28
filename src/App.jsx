@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Building2, TrendingUp, Users, MessageCircle, ChevronLeft, ChevronRight, Home, Hammer } from 'lucide-react';
+import { Menu, X, Building2, TrendingUp, Users, MessageCircle, ChevronLeft, ChevronRight, Home, Hammer, Play } from 'lucide-react';
 
 // Navbar Component
 const Navbar = () => {
@@ -21,12 +21,12 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             className="text-white text-2xl font-bold"
           >
-            <span className="text-red-600">Contrucciones</span> & <span className="text-red-600"> Reformas </span> Narvaez
+            <span className="text-red-600">Construcciones</span> & <span className="text-red-600"> Reformas </span> Narvaez
           </motion.div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
-            {['inicio', 'quienes-somos', 'servicios', 'proyectos', 'contacto'].map((item) => (
+            {['inicio', 'quienes-somos', 'servicios', 'videos', 'proyectos', 'contacto'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
@@ -53,7 +53,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             className="md:hidden pb-4"
           >
-            {['inicio', 'quienes-somos', 'servicios', 'proyectos', 'contacto'].map((item) => (
+            {['inicio', 'quienes-somos', 'servicios', 'videos', 'proyectos', 'contacto'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
@@ -84,7 +84,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="text-5xl md:text-7xl font-bold text-white mb-6"
         >
-          <span className="text-red-600"> Contruscciones </span> & <span className="text-red-600">Reformas</span> con confianza
+          <span className="text-red-600"> Construcciones </span> & <span className="text-red-600">Reformas</span> con confianza
         </motion.h1>
         
         <motion.p
@@ -205,12 +205,12 @@ const Services = () => {
     {
       icon: <Home className="w-12 h-12" />,
       title: 'Reformas Integrales',
-      description: 'Estrategias personalizadas de marketing que aumentan tu visibilidad online y generan resultados medibles para tu negocio.'
+      description: 'Renovamos completamente tu hogar o negocio, desde la planificación hasta la entrega final. Nos encargamos de todo el proceso para que no tengas que preocuparte por nada.'
     },
     {
       icon: <Hammer className="w-12 h-12" />,
       title: 'Reformas de Espacios Específicos',
-      description: 'Especialistas en reformas de baños, cocinas y habitaciones, con soluciones modernas, funcionales y duraderas que mejoran tu confort y el valor de tu propiedad.'
+      description: 'Especialistas en reformas de todo tipo: baños, cocinas, habitaciones, alicatado, solería, plomería y electricidad. Ofrecemos soluciones modernas, funcionales y duraderas que mejoran tu confort y aumentan el valor de tu propiedad.'
     }
   ];
 
@@ -279,19 +279,11 @@ const Projects = () => {
     {
       id: 3,
       title: 'Contrucción de espacio común',
-      location: 'Monterrey',
+      location: 'Huelva',
       before: '/sala_antes.jpeg',
       after: '/sala_despues.jpeg',
       description: 'Proyecto de expansión de un area común'
     },
-    {
-      id: 4,
-      title: 'Restauración de Fachada',
-      location: 'Puebla',
-      before: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&h=600&fit=crop',
-      after: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop',
-      description: 'Renovación exterior con materiales modernos y eficiencia energética'
-    }
   ];
 
   const nextProject = () => {
@@ -430,6 +422,158 @@ const Projects = () => {
     </section>
   );
 };
+// Videos Component
+const Videos = () => {
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
+  const videos = [
+    {
+      id: 1,
+      title: 'Time-lapse Construcción Completa',
+      description: 'Proceso completo de construcción de casa moderna en 2 minutos',
+      thumbnail: '/videos/thumbl/video-1-thumbl.png',
+      //youtubeId: 'dQw4w9WgXcQ', // Reemplaza con tu ID de video
+      videoUrl: '/videos/video-1.mp4',
+      duration: '2:30'
+    },
+    {
+      id: 2,
+      title: 'Remodelación de Interiores',
+      description: 'Transformación completa de espacios interiores',
+      thumbnail: '/videos/thumbl/video-2-thumbl.png',
+      //youtubeId: 'dQw4w9WgXcQ', // Reemplaza con tu ID de video
+      videoUrl: '/videos/video-2.mp4',
+      duration: '3:15'
+    },
+  ];
+
+  return (
+    <section id="videos" className="bg-gray-50 py-20 px-4">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+            Nuestros <span className="text-red-600">Videos</span>
+          </h2>
+          <div className="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
+          <p className="text-gray-700 text-lg max-w-2xl mx-auto">
+            Mira el proceso de construcción y transformación de nuestros proyectos
+          </p>
+        </motion.div>
+
+        {/* Video Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {videos.map((video, index) => (
+            <motion.div
+              key={video.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group cursor-pointer"
+              onClick={() => setSelectedVideo(video)}
+            >
+              <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300">
+                {/* Thumbnail */}
+                <img
+                  src={video.thumbnail}
+                  alt={video.title}
+                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300 flex items-center justify-center">
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    className="bg-red-600 rounded-full p-6 group-hover:bg-red-700 transition-colors duration-300"
+                  >
+                    <Play className="w-8 h-8 text-white" fill="white" />
+                  </motion.div>
+                </div>
+
+                {/* Duration Badge */}
+                <div className="absolute bottom-4 right-4 bg-black/80 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+                  {video.duration}
+                </div>
+              </div>
+
+              {/* Video Info */}
+              <div className="mt-4">
+                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-red-600 transition-colors duration-300">
+                  {video.title}
+                </h3>
+                <p className="text-gray-600">{video.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Video Modal */}
+        {selectedVideo && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedVideo(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              className="relative w-full max-w-5xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedVideo(null)}
+                className="absolute -top-12 right-0 text-white hover:text-red-600 transition-colors duration-300"
+              >
+                <X className="w-8 h-8" />
+              </button>
+
+              {/* Video Player */}
+              <div className="bg-black rounded-2xl overflow-hidden shadow-2xl">
+                {selectedVideo.youtubeId ? (
+                  // YouTube Video
+                  <iframe
+                    className="w-full aspect-video"
+                    src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1`}
+                    title={selectedVideo.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                ) : (
+                  // Local Video
+                  <video
+                    className="w-full aspect-video"
+                    controls
+                    autoPlay
+                    src={selectedVideo.videoUrl}
+                  >
+                    Tu navegador no soporta el elemento de video.
+                  </video>
+                )}
+
+                {/* Video Info */}
+                <div className="p-6 bg-gray-900">
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    {selectedVideo.title}
+                  </h3>
+                  <p className="text-gray-300">{selectedVideo.description}</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </div>
+    </section>
+  );
+};
 
 // Contact Component
 const Contact = () => {
@@ -453,7 +597,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contacto" className="min-h-screen bg-white py-20 px-4">
+    <section id="contacto" className="bg-white py-20 px-4">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -467,75 +611,23 @@ const Contact = () => {
           </h2>
           <div className="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
           <p className="text-gray-700 text-lg">
-            ¿Tienes un proyecto en mente? ¡Hablemos!
+            ¿Tienes un proyecto en mente? ¡Hablemos! Haz clic en el icono de WhatsApp
           </p>
-        </motion.div>
-
-        <motion.form
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          onSubmit={handleSubmit}
-          className="bg-gray-50 rounded-2xl p-8 shadow-xl"
+          <motion.a
+          href="https://wa.me/+34641884268"
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, scale: 0.5 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5, type: "spring", stiffness: 180, damping: 12 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="inline-flex items-center justify-center w-20 h-20 bg-[#25D366] rounded-full shadow-2xl hover:shadow-green-300/50 transition-all duration-300 mx-auto"
+          aria-label="Contactar por WhatsApp"
         >
-          <div className="mb-6">
-            <label htmlFor="name" className="block text-black font-semibold mb-2">
-              Nombre
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-red-600 focus:outline-none transition-colors duration-300"
-              placeholder="Tu nombre"
-            />
-          </div>
-
-          <div className="mb-6">
-            <label htmlFor="email" className="block text-black font-semibold mb-2">
-              Correo Electrónico
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-red-600 focus:outline-none transition-colors duration-300"
-              placeholder="tu@email.com"
-            />
-          </div>
-
-          <div className="mb-6">
-            <label htmlFor="message" className="block text-black font-semibold mb-2">
-              Mensaje
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows="5"
-              className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-red-600 focus:outline-none transition-colors duration-300 resize-none"
-              placeholder="Cuéntanos sobre tu proyecto..."
-            ></textarea>
-          </div>
-
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            type="submit"
-            className="w-full bg-red-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-red-700 transition-colors duration-300 shadow-lg hover:shadow-xl"
-          >
-            Enviar Mensaje
-          </motion.button>
-        </motion.form>
+          <MessageCircle className="w-10 h-10 text-white" />
+        </motion.a>
+        </motion.div>
       </div>
     </section>
   );
@@ -547,7 +639,7 @@ const Footer = () => {
     <footer className="bg-black text-white py-8 px-4">
       <div className="max-w-7xl mx-auto text-center">
         <p className="text-gray-400">
-          © {new Date().getFullYear()} <span className="text-red-600 font-semibold">Contrucciones & Reformas Narvaez</span>. Todos los derechos reservados.
+          © {new Date().getFullYear()} <span className="text-red-600 font-semibold">Construcciones & Reformas Narvaez</span>. Todos los derechos reservados.
         </p>
         <p className="text-gray-400">
           tel: +34 641884268
@@ -590,6 +682,7 @@ export default function App() {
       <Hero />
       <About />
       <Services />
+      <Videos />
       <Projects />
       <Contact />
       <Footer />
